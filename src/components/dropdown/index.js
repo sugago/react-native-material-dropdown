@@ -11,12 +11,15 @@ import {
   Platform,
   ViewPropTypes,
   I18nManager,
+  Image
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { TextField } from 'react-native-material-textfield';
 
 import DropdownItem from '../item';
 import styles from './styles';
+
+const cafe = require('../category_icons/cafe.png');
 
 export default class Dropdown extends PureComponent {
   static defaultProps = {
@@ -630,6 +633,16 @@ export default class Dropdown extends PureComponent {
 
     return (
       <DropdownItem index={index} {...props}>
+        <Image
+          style={{
+            width: 16,
+            height: 16,
+            tintColor: '#838282',
+            marginTop: 3,
+            marginLeft: 5,
+          }}
+          source={cafe}
+          resizeMode={'contain'} />
         <Text style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
           {title}
         </Text>
