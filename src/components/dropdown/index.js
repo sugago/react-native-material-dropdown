@@ -18,8 +18,7 @@ import { TextField } from 'react-native-material-textfield';
 
 import DropdownItem from '../item';
 import styles from './styles';
-
-const cafe = require('../category_icons/cafe.png');
+import images from './images';
 
 export default class Dropdown extends PureComponent {
   static defaultProps = {
@@ -30,6 +29,7 @@ export default class Dropdown extends PureComponent {
     data: [],
 
     valueExtractor: ({ value } = {}, index) => value,
+    imageExtractor: ({ img } = {}, index) => img,
     labelExtractor: ({ label } = {}, index) => label,
     propsExtractor: () => null,
 
@@ -574,6 +574,7 @@ export default class Dropdown extends PureComponent {
 
     let {
       valueExtractor,
+      imageExtractor,
       labelExtractor,
       propsExtractor,
       textColor,
@@ -606,6 +607,7 @@ export default class Dropdown extends PureComponent {
       };
 
     let value = valueExtractor(item, index);
+    let img = imageExtractor(item, index);
     let label = labelExtractor(item, index);
 
     let title = null == label?
@@ -641,7 +643,7 @@ export default class Dropdown extends PureComponent {
             marginTop: 3,
             marginLeft: 5,
           }}
-          source={cafe}
+          source={{ uri: img }}
           resizeMode={'contain'} />
         <Text style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
           {title}
